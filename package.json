@@ -1,0 +1,17 @@
+{
+  "name": "move-monorepo",
+  "private": true,
+  "workspaces": [
+    "ui"
+  ],
+  "scripts": {
+    "setup": "node scripts/setup.mjs",
+    "dev": "npm run dev --workspace ui",
+    "dev:api": "node scripts/run-api.mjs spring-boot:run",
+    "test:ui": "npm run test --workspace ui",
+    "test:api": "node scripts/run-api.mjs test",
+    "test": "npm run test:ui && npm run test:api",
+    "build:ui": "npm run build --workspace ui",
+    "test:e2e": "npm run test:e2e --workspace ui"
+  }
+}

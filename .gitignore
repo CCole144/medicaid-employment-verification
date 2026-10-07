@@ -1,0 +1,9 @@
+node_modules/
+ui/dist/
+ui/coverage/
+ui/test-results/
+ui/playwright-report/
+api/target/
+api/data/
+.env
+*.log

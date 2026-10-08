@@ -6,7 +6,7 @@ export default defineConfig({
   // The resulting JavaScript bundle is about 284 kB before gzip.
   build: { rollupOptions: { treeshake: false } },
   css: { preprocessorMaxWorkers: 0 },
-  // Browser requests stay on the UI origin; Vite forwards /api to Java.
+  // Browser requests stay on the UI origin and forwards /api to Java.
   server: {
     port: 5173,
     strictPort: true,

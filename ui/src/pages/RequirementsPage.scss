@@ -1,0 +1,128 @@
+// These styles apply only to the Requirements page.
+.requirements-page {
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    padding: 22px 0 10px;
+
+    li {
+      min-width: 0;
+    }
+  }
+
+  .requirement-topic-button {
+    width: 100%;
+    height: 100%;
+    min-height: 58px;
+    padding: 12px;
+    background: #4f7ac4;
+    color: #fff;
+    border: 2px solid #315687;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+
+    &:hover {
+      background: #315eaa;
+    }
+
+    &[aria-expanded="true"] {
+      background: #244a85;
+      border-color: #172f56;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+  }
+
+  .requirement-details {
+    margin-bottom: 24px;
+    padding: 22px;
+    background: #fff;
+    border: 2px solid #4f7ac4;
+    text-align: left;
+    overflow-wrap: anywhere;
+    scroll-margin-top: 24px;
+
+    &[hidden] {
+      display: none;
+    }
+
+    h3 {
+      margin: 0 0 16px;
+      color: #244a85;
+    }
+
+    h3:focus-visible {
+      outline: 2px solid #4f7ac4;
+      outline-offset: 5px;
+    }
+
+    ul {
+      padding-left: 22px;
+      margin-block: 12px 20px;
+    }
+
+    li {
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    a {
+      color: #244a85;
+    }
+  }
+
+  // Desktop: buttons on the left and information on the right.
+  @media (min-width: 800px) {
+    &:has(> .requirement-details:not([hidden])) {
+      width: min(100%, 900px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      grid-template-areas:
+        "heading heading"
+        "introduction introduction"
+        "feedback feedback"
+        "topics details"
+        "navigation details";
+      column-gap: 24px;
+      align-items: start;
+
+      > h2 {
+        grid-area: heading;
+      }
+
+      > p:not([role]) {
+        grid-area: introduction;
+      }
+
+      > [role="alert"],
+      > [role="status"] {
+        grid-area: feedback;
+      }
+
+      > .information-box {
+        grid-area: topics;
+        min-width: 0;
+      }
+
+      > .button-row {
+        grid-area: navigation;
+      }
+
+      > .requirement-details {
+        grid-area: details;
+        min-width: 0;
+        max-height: calc(100vh - 48px);
+        overflow-y: auto;
+        position: sticky;
+        top: 24px;
+      }
+    }
+  }
+
+  // Small phones: stack the topic buttons vertically.
+  @media (max-width: 360px) {
+    .category-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+}
